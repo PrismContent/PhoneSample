@@ -92,7 +92,7 @@ Ext.define('PrismEvents.view.Main', {
 
         Ext.Ajax.request({
             url: this.current_url,
-            withCredentials: true,
+            withCredentials: false,
             useDefaultXhrHeaders: false,
             success: function(response){
                 pnl.processEvents(response);
