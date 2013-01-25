@@ -37,6 +37,23 @@ Ext.define('PrismEvents.view.Main', {
                         }
                     }
                 }]
+            }, {
+                title: 'Weather',
+                iconCls: 'info',
+                xtype: 'container',
+
+                layout: 'fit',
+                styleHtmlContent: true,
+
+                items: [{
+                    xtype: 'titlebar',
+                    title: 'Current Weather',
+                    docked: 'top'
+                }, {
+                    xtype: 'weather',
+                    id: 'current-weather',
+                    weatherUrl: ''
+                }]
             }
         ],
         listeners: {
@@ -66,7 +83,7 @@ Ext.define('PrismEvents.view.Main', {
     },
     mobileEventsDomain: 'http://www.prismcontent.com/',
     currentDateUrl: function(){
-        url = this.mobileEventsDomain + 'mobile/events/2059/';
+        url = this.mobileEventsDomain + 'mobile/events/580/';
         url += this.currentDate.getFullYear() + '/';
         url += (1+this.currentDate.getMonth()) + '/';
         url += this.currentDate.getDate() + '.json';
@@ -79,8 +96,7 @@ Ext.define('PrismEvents.view.Main', {
         store.load();
         eventList.show();
     },
-    processEvents: function(response){
-        jsonData = Ext.JSON.decode( response.responseText );
+    processEvents: function(jsonData){
         this.previous_url = jsonData.previous_url;
         this.next_url = jsonData.next_url;
         this.currentDate = new Date(Date.parse(jsonData.calendar_date, "Y/m/d"));
@@ -95,7 +111,8 @@ Ext.define('PrismEvents.view.Main', {
             withCredentials: false,
             useDefaultXhrHeaders: false,
             success: function(response){
-                pnl.processEvents(response);
+                jsonData = Ext.JSON.decode( response.responseText );
+                pnl.processEvents(jsonData);
             }
         });
     }

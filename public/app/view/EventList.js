@@ -18,7 +18,25 @@ Ext.define('PrismEvents.view.EventList', {
     ],
     config: {
         fullscreen: true,
-        itemTpl: '<strong>{name}</strong><br/><em>{starting_at}, {location}</em>',
+        itemTpl: new Ext.XTemplate('<strong>{name}</strong><br/><em>{[this.dateFormat(values.starting_at)]}, {location}</em>', {
+            dateFormat: function(aDate){
+                dateString = '';
+                if( aDate.getHours()==0 ){
+                    dateString += '12';
+                } else if( aDate.getHours()>12 ){
+                    dateString += (aDate.getHours() - 12).toString();
+                } else {
+                    dateString += aDate.getHours().toString();
+                }
+                if( aDate.getMinutes()<10 ){
+                    dateString += ':0' + aDate.getMinutes().toString();
+                } else {
+                    dateString += ':' + aDate.getMinutes().toString();
+                }
+                dateString += aDate.getHours() > 11 ? ' p.m.' : ' a.m.';
+                return dateString;
+            }
+        }),
         style: 'text-align: center;',
         store: {
             model: 'EventItem',

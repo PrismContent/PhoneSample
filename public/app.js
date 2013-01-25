@@ -12,7 +12,7 @@ Ext.application({
         'Ext.MessageBox'
     ],
 
-    views: ['Main', 'EventList'],
+    views: ['Main', 'EventList', 'Weather'],
 
     icon: {
         '57': 'resources/icons/Icon.png',
