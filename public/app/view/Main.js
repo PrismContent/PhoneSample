@@ -79,7 +79,7 @@ Ext.define('PrismEvents.view.Main', {
         this.current_url = this.mobileEventsDomain + targetUrl;
     },
     setPanelTitle: function(){
-        this.down('titlebar').setTitle('Community Events for ' + pnl.currentDateString() );
+        this.down('titlebar').setTitle( pnl.currentDateString() + ' Events' );
     },
     mobileEventsDomain: 'http://www.prismcontent.com/',
     currentDateUrl: function(){
