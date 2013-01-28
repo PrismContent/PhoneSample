@@ -52,7 +52,7 @@ Ext.define('PrismEvents.view.Main', {
                 }, {
                     xtype: 'weather',
                     id: 'current-weather',
-                    weatherUrl: ''
+                    weatherUrl: 'http://www.prismcontent.com/mobile/weather/580.json'
                 }]
             }
         ],

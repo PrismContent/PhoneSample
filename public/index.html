@@ -37,6 +37,32 @@
             opacity: 0.8;
         }
 
+        div.weather-sunny-partly, div.weather-rain, div.weather-sunny, div.weather-snow{
+            font-size: 150%;
+            font-weight: bold;
+            color: red;
+            background: center center url('/resources/icons/weather-sunny.jpg') white no-repeat;
+            height: 320px;
+        }
+
+
+        div.weather-sunny-partly table, div.weather-rain table, div.weather-sunny table, div.weather-snow table{
+            padding-top: 100px;
+        }
+
+        div.weather-partly-sunny{
+            background-image: url('/resources/icons/weather-sunny-partly.png');
+        }
+
+        div.weather-rain{
+            background-image: url('/resources/icons/weather-rain.png');
+        }
+
+        div.weather-snow{
+            background-image: url('/resources/icons/weather-snow.png');
+        }
+
+
         @-webkit-keyframes appLoadingIndicator{
             0% {
                 opacity: 0.8
